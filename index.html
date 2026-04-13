@@ -451,23 +451,36 @@ function updateTelegramLinks() {
   if (footer) footer.href = user ? `https://t.me/${user}` : '#';
 }
 
-function loadTelegramUsername() {
+async function loadTelegramUsername() {
   const saved = localStorage.getItem('techshop_tg_username');
   tgUsername = normalizeTelegramUsername(saved || TG_USERNAME_DEFAULT);
+  try {
+    const { data, error } = await sb.from('shop_settings').select('tg_username').eq('id', 1).maybeSingle();
+    if (!error && data?.tg_username) tgUsername = normalizeTelegramUsername(data.tg_username);
+  } catch (_) {}
   updateTelegramLinks();
 }
 
-function saveAdminTelegramUsername() {
+async function saveAdminTelegramUsername() {
   const el = document.getElementById('admin-tg-username');
   const user = normalizeTelegramUsername(el.value);
   if (!/^[A-Za-z0-9_]{5,32}$/.test(user)) {
     showToast('❌ Telegram username 5-32 belgi bo\'lsin');
     return;
   }
-  tgUsername = user;
-  localStorage.setItem('techshop_tg_username', user);
-  updateTelegramLinks();
-  showToast('✅ Telegram akkaunt saqlandi');
+  try {
+    const { error } = await getWriteClient().from('shop_settings').upsert(
+      { id: 1, tg_username: user, updated_at: new Date().toISOString() },
+      { onConflict: 'id' }
+    );
+    if (error) throw error;
+    tgUsername = user;
+    localStorage.setItem('techshop_tg_username', user);
+    updateTelegramLinks();
+    showToast('✅ Telegram akkaunt saqlandi');
+  } catch (e) {
+    showToast('❌ Sozlama saqlanmadi: ' + (e.message || 'xatolik'));
+  }
 }
 
 async function callEdge(functionName, payload) {
@@ -979,7 +992,7 @@ function showToast(msg) {
 
 // ===== INIT =====
 (async()=>{
-  loadTelegramUsername();
+  await loadTelegramUsername();
   await loadAll(); renderCats(); renderProducts();
 })();
 </script>
