@@ -419,9 +419,10 @@ const SUPABASE_URL  = CONFIG.SUPABASE_URL;
 const SUPABASE_KEY  = CONFIG.SUPABASE_KEY;
 const IK_URL        = CONFIG.IK_URL;
 const IK_PUBLIC_KEY = CONFIG.IK_PUBLIC_KEY;
+const IK_PRIVATE_KEY= CONFIG.IK_PRIVATE_KEY;
 const TG_USERNAME_DEFAULT = CONFIG.TG_USERNAME;
 
-if (!SUPABASE_URL || !SUPABASE_KEY || !IK_URL || !IK_PUBLIC_KEY || !TG_USERNAME_DEFAULT) {
+if (!SUPABASE_URL || !SUPABASE_KEY || !IK_URL || !IK_PUBLIC_KEY || !IK_PRIVATE_KEY || !TG_USERNAME_DEFAULT) {
   alert("config.local.js ichida majburiy maydonlar to'ldirilmagan.");
   throw new Error('Incomplete TECHSHOP_CONFIG');
 }
@@ -475,12 +476,20 @@ async function callEdge(functionName, payload) {
   return data;
 }
 
+// ===== IMAGEKIT SIGNATURE (SubtleCrypto HMAC-SHA1) =====
+async function ikSign(token, expire) {
+  const enc  = new TextEncoder();
+  const key  = await crypto.subtle.importKey('raw', enc.encode(IK_PRIVATE_KEY),
+    { name:'HMAC', hash:'SHA-1' }, false, ['sign']);
+  const sig  = await crypto.subtle.sign('HMAC', key, enc.encode(token + expire));
+  return Array.from(new Uint8Array(sig)).map(b=>b.toString(16).padStart(2,'0')).join('');
+}
+
 // Upload file → ImageKit, returns { url, fileId }
 async function uploadToImageKit(file) {
-  const signed = await callEdge('imagekit-sign', {});
-  const token  = signed.token;
-  const expire = signed.expire;
-  const sig    = signed.signature;
+  const token  = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
+  const expire = Math.floor(Date.now()/1000) + 3600;
+  const sig    = await ikSign(token, expire);
 
   const fd = new FormData();
   fd.append('file', file);
@@ -511,7 +520,11 @@ async function uploadToImageKit(file) {
 async function deleteFromImageKit(fileId) {
   if (!fileId) return;
   try {
-    await callEdge('imagekit-delete', { fileId });
+    const auth = btoa(IK_PRIVATE_KEY + ':');
+    await fetch(`https://api.imagekit.io/v1/files/${fileId}`, {
+      method: 'DELETE',
+      headers: { Authorization: 'Basic ' + auth }
+    });
   } catch(e) { console.warn('ImageKit delete:', e); }
 }
 
