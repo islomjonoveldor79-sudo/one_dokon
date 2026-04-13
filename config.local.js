@@ -3,5 +3,6 @@ window.TECHSHOP_CONFIG = {
   SUPABASE_KEY: "sb_publishable_Bof7iXPjl_WSq1fceKi_6w_iQhf09cq",
   IK_URL: "https://ik.imagekit.io/zaveeqnja",
   IK_PUBLIC_KEY: "public_P73tVHOV8MbhGgBny85iUrMtcL4=",
+  IK_PRIVATE_KEY: "private_zf+FV703GI3f2jmv9BavytsKr5Y=",
   TG_USERNAME: "yourusername"
 };
