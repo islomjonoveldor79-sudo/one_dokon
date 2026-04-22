@@ -15,9 +15,7 @@
 
     :root {
       --blue: #0D6B50;
-      /* deep jade — primary */
       --green: #1FAD80;
-      /* medium jade — accent */
       --red: #E63946;
       --orange: #F4845F;
       --bg: #EEF7F2;
@@ -86,8 +84,6 @@
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
-
-    .sf-logo span {}
 
     .icon-btn {
       width: 38px;
@@ -1386,7 +1382,6 @@
 
 <body>
 
-  <!-- STOREFRONT -->
   <div id="page-store" class="page active">
     <header class="sf-header">
       <div class="sf-header-inner">
@@ -1414,10 +1409,8 @@
         <div class="empty-sub">Boshqa so'z bilan qidiring yoki kategoriyani o'zgartiring</div>
       </div>
     </div>
-
   </div>
 
-  <!-- PRODUCT MODAL -->
   <div class="modal-overlay" id="product-modal" onclick="closeModal(event)">
     <div class="modal-sheet">
       <div class="modal-drag"></div>
@@ -1440,7 +1433,6 @@
     </div>
   </div>
 
-  <!-- ADMIN LOGIN -->
   <div id="page-admin-login" class="page">
     <div class="admin-login-page">
       <div class="login-card">
@@ -1460,7 +1452,6 @@
     </div>
   </div>
 
-  <!-- ADMIN DASHBOARD -->
   <div id="page-admin" class="page">
     <div class="admin-page">
       <div class="admin-topbar">
@@ -1477,35 +1468,13 @@
           </div>
         </div>
 
-        <!-- ANALYTICS -->
         <div style="margin-bottom:20px">
-          <div style="font-size:15px;font-weight:800;margin-bottom:10px">📈 Tashrif statistikasi</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:12px">
-            <div class="stat-card">
-              <div class="stat-num" id="an-today">—</div>
-              <div class="stat-label">Bugun tashrif</div>
-            </div>
-            <div class="stat-card">
-              <div class="stat-num" id="an-week">—</div>
-              <div class="stat-label">7 kun ichida</div>
-            </div>
-          </div>
-          <div class="stat-card" style="padding:16px 16px 12px">
-            <div style="font-size:12px;font-weight:700;color:var(--sub);margin-bottom:10px">Oxirgi 7 kun grafigi</div>
-            <div style="display:flex;align-items:flex-end;gap:5px;height:70px" id="an-chart"></div>
-            <div style="display:flex;gap:5px;margin-top:6px" id="an-labels"></div>
-          </div>
-        </div>
-        <!-- END ANALYTICS -->
-
-        <!-- LIMIT DASHBOARD -->
-        <div style="margin-bottom:20px">
-          <div style="font-size:15px;font-weight:800;margin-bottom:10px">📊 Tizim holati</div>
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div style="font-size:15px;font-weight:800;margin-bottom:10px;">📊 Tizim holati</div>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px">
             <div class="stat-card" style="text-align:left;padding:14px 16px">
-              <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:4px">📦 Jami mahsulotlar</div>
+              <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:4px;">Yozuvlar soni</div>
               <div style="font-size:22px;font-weight:900;color:var(--blue)" id="limit-rows">—</div>
-              <div style="font-size:11px;color:var(--sub);margin-top:2px">500 tagacha bepul</div>
+              <div style="font-size:11px;color:var(--sub);margin-top:2px">Jami yozuvlar</div>
               <div style="height:4px;background:var(--border);border-radius:4px;margin-top:8px;overflow:hidden">
                 <div id="bar-rows"
                   style="height:100%;background:linear-gradient(90deg,#0D6B50,#1FAD80);border-radius:4px;width:0%;transition:width .6s">
@@ -1513,10 +1482,9 @@
               </div>
             </div>
             <div class="stat-card" style="text-align:left;padding:14px 16px">
-              <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:4px">🗄️ Ma'lumotlar bazasi
-              </div>
+              <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:4px;">Xotira hajmi</div>
               <div style="font-size:22px;font-weight:900;color:var(--blue)" id="limit-storage">—</div>
-              <div style="font-size:11px;color:var(--sub);margin-top:2px" id="limit-storage-status">Holati: yaxshi</div>
+              <div style="font-size:11px;color:var(--sub);margin-top:2px">Limitgacha: 500 MB</div>
               <div style="height:4px;background:var(--border);border-radius:4px;margin-top:8px;overflow:hidden">
                 <div id="bar-storage"
                   style="height:100%;background:linear-gradient(90deg,#0D6B50,#1FAD80);border-radius:4px;width:0%;transition:width .6s">
@@ -1524,9 +1492,9 @@
               </div>
             </div>
             <div class="stat-card" style="text-align:left;padding:14px 16px">
-              <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:4px">🖼️ Yuklangan rasmlar</div>
+              <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:4px;">Rasmlar soni</div>
               <div style="font-size:22px;font-weight:900;color:var(--blue)" id="limit-images">—</div>
-              <div style="font-size:11px;color:var(--sub);margin-top:2px">Cheksiz joylashtirish</div>
+              <div style="font-size:11px;color:var(--sub);margin-top:2px">Jami yuklangan</div>
               <div style="height:4px;background:var(--border);border-radius:4px;margin-top:8px;overflow:hidden">
                 <div id="bar-images"
                   style="height:100%;background:linear-gradient(90deg,#0D6B50,#1FAD80);border-radius:4px;width:0%;transition:width .6s">
@@ -1534,18 +1502,22 @@
               </div>
             </div>
             <div class="stat-card" style="text-align:left;padding:14px 16px">
-              <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:4px">📡 Oylik trafik</div>
-              <div style="font-size:22px;font-weight:900;color:var(--blue)" id="limit-bw">—</div>
-              <div style="font-size:11px;color:var(--sub);margin-top:2px">20 GB / oy bepul</div>
+              <div style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:4px;">Oylik trafik</div>
+              <div style="font-size:22px;font-weight:900;color:var(--blue)" id="limit-bw">Taxminiy</div>
+              <div style="font-size:11px;color:var(--sub);margin-top:2px">Limit: ~20 GB</div>
               <div style="height:4px;background:var(--border);border-radius:4px;margin-top:8px;overflow:hidden">
                 <div id="bar-bw"
-                  style="height:100%;background:linear-gradient(90deg,#F4845F,#E63946);border-radius:4px;width:0%;transition:width .6s">
+                  style="height:100%;background:linear-gradient(90deg,#F4845F,#E63946);border-radius:4px;width:15%;transition:width .6s">
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <!-- END LIMIT DASHBOARD -->
+        <div class="admin-mini-card" style="margin-bottom: 24px;">
+          <div class="mini-title">📈 Tashriflar statistikasi (So'nggi 7 kun)</div>
+          <div style="height: 120px; display: flex; align-items: flex-end; gap: 8px; padding-top: 20px;" id="views-chart">
+             </div>
+        </div>
 
         <div class="stats-grid">
           <div class="stat-card">
@@ -1577,7 +1549,6 @@
           <div class="section-header">
             <h2>📦 Mahsulotlar</h2><button class="add-btn" onclick="openProdForm()">+ Yangi</button>
           </div>
-          <!-- Admin mahsulot qidiruvi -->
           <div class="search-box" style="margin-bottom:12px">
             <span>🔍</span>
             <input type="search" id="admin-prod-search" placeholder="Mahsulot qidiring..." oninput="filterAdminProds()"
@@ -1591,7 +1562,6 @@
     </div>
   </div>
 
-  <!-- PRODUCT FORM -->
   <div class="form-overlay" id="prod-form-overlay" onclick="closeProdForm(event)">
     <div class="form-sheet">
       <div class="form-header">
@@ -1668,7 +1638,6 @@
     </div>
   </div>
 
-  <!-- CATEGORY FORM -->
   <div class="form-overlay" id="cat-form-overlay" onclick="closeCatForm(event)">
     <div class="form-sheet" style="max-height:65vh">
       <div class="form-header">
@@ -1701,7 +1670,6 @@
     </div>
   </div>
 
-  <!-- CONFIRM -->
   <div class="confirm-overlay" id="confirm-overlay">
     <div class="confirm-box">
       <div class="confirm-icon">🗑️</div>
@@ -1792,13 +1760,7 @@
       }
     }
 
-    async function callEdge(functionName, payload) {
-      const { data, error } = await sb.functions.invoke(functionName, { body: payload || {} });
-      if (error) throw new Error(error.message || `${functionName} xatosi`);
-      return data;
-    }
-
-    // ===== IMAGEKIT SIGNATURE (SubtleCrypto HMAC-SHA1) =====
+    // ===== IMAGEKIT SIGNATURE =====
     async function ikSign(token, expire) {
       const enc = new TextEncoder();
       const key = await crypto.subtle.importKey('raw', enc.encode(IK_PRIVATE_KEY),
@@ -1807,7 +1769,6 @@
       return Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('');
     }
 
-    // Upload file → ImageKit, returns { url, fileId }
     async function uploadToImageKit(file) {
       const token = crypto.randomUUID ? crypto.randomUUID() : Math.random().toString(36).slice(2);
       const expire = Math.floor(Date.now() / 1000) + 3600;
@@ -1822,7 +1783,6 @@
       fd.append('token', token);
       fd.append('folder', '/products');
 
-      // Show progress
       const prog = document.getElementById('upload-progress');
       const bar = document.getElementById('upload-progress-bar');
       prog.style.display = 'block';
@@ -1834,11 +1794,10 @@
       bar.style.width = '100%';
       setTimeout(() => { prog.style.display = 'none'; bar.style.width = '0'; }, 600);
 
-      if (!res.ok) throw new Error(data.message || 'ImageKit upload xatosi');
+      if (!res.ok) throw new Error(data.message || 'Rasm yuklashda xatolik');
       return { url: data.url, fileId: data.fileId };
     }
 
-    // Delete file from ImageKit
     async function deleteFromImageKit(fileId) {
       if (!fileId) return;
       try {
@@ -1847,7 +1806,7 @@
           method: 'DELETE',
           headers: { Authorization: 'Basic ' + auth }
         });
-      } catch (e) { console.warn('ImageKit delete:', e); }
+      } catch (e) { console.warn('Rasm o\'chirilmadi:', e); }
     }
 
     // ===== FILE UPLOAD UI =====
@@ -1856,7 +1815,6 @@
     let existingFileId = [null, null, null];
     let removeExisting = [false, false, false];
 
-    // ImageKit URL ga avtomatik o'lcham/sifat transformatsiyasi qo'shish
     function ikTransform(url, w = 500, q = 80) {
       if (!url || !url.includes('imagekit.io')) return url;
       return url.includes('?') ? `${url}&tr=w-${w},q-${q}` : `${url}?tr=w-${w},q-${q}`;
@@ -1866,7 +1824,6 @@
       return [product.image_url, product.image_url_2, product.image_url_3].filter(Boolean);
     }
 
-    // Rasm yo'q bo'lsa null qaytaradi (picsum fallback o'chirildi)
     function getMainProductImage(product) {
       return ikTransform(getProductImages(product)[0]) || null;
     }
@@ -1906,7 +1863,6 @@
       updateImageSlotPreview(index, null);
     }
 
-    // Drag & drop
     document.addEventListener('DOMContentLoaded', () => {
       document.querySelectorAll('.img-upload-zone').forEach(zone => {
         const index = parseInt(zone.dataset.index || '0', 10);
@@ -1941,6 +1897,7 @@
     async function loadAll() {
       const [cRes, pRes] = await Promise.all([
         sb.from('categories').select('*').order('created_at'),
+        // Yangi qo'shilganlar birinchi o'rinda turishi uchun "ascending: false" qilindi
         sb.from('products').select('*').order('created_at', { ascending: false })
       ]);
       if (!cRes.error) categories = cRes.data;
@@ -1953,7 +1910,7 @@
       document.getElementById(id).classList.add('active');
       window.scrollTo(0, 0);
     }
-    // Yashirin admin kirish: logoga 5 marta ketma-ket bosish
+    
     let _logoTaps = 0, _logoTimer = null;
     function logoTap() {
       _logoTaps++;
@@ -1961,7 +1918,6 @@
       if (_logoTaps >= 5) { _logoTaps = 0; goAdmin(); return; }
       _logoTimer = setTimeout(() => { _logoTaps = 0; }, 1800);
     }
-    // Hash orqali ham kirish mumkin: site.html#admin
     if (window.location.hash === '#admin') { window.location.hash = ''; setTimeout(() => goAdmin(), 300); }
 
     function goAdmin() { showPage('page-admin-login'); }
@@ -1988,7 +1944,6 @@
           adminSb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
             global: { headers: { 'x-admin-pass': p } }
           });
-          // Sessiyani saqlash
           sessionStorage.setItem('nefrit_admin_pass', p);
           document.getElementById('login-error').style.display = 'none';
           document.getElementById('login-pass').value = '';
@@ -2009,7 +1964,6 @@
       }
     }
 
-    // Sahifa yuklanganda sessiyani tiklash
     async function tryAutoLogin() {
       const saved = sessionStorage.getItem('nefrit_admin_pass');
       if (!saved) return;
@@ -2097,7 +2051,6 @@
     function openProduct(id) {
       const p = products.find(x => x.id === id); if (!p) return;
       const imgs = getProductImages(p);
-      // Rasmni ImageKit transformatsiyasiz to'liq sifatda modal uchun olish
       const rawImgs = imgs.map(url => ikTransform(url, 900, 85));
       currentModalImages = rawImgs.length ? rawImgs : [];
       currentModalIndex = 0;
@@ -2159,37 +2112,60 @@
       const tgInput = document.getElementById('admin-tg-username');
       if (tgInput) tgInput.value = '@' + normalizeTelegramUsername(tgUsername);
 
-      // === LIMIT DASHBOARD yangilash ===
       const totalRows = totalProds + totalCats + 1;
       document.getElementById('limit-rows').textContent = totalRows + ' ta';
-      document.getElementById('bar-rows').style.width = Math.min(totalRows / 5, 100) + '%'; // 500 yozuvda to'ladi
+      document.getElementById('bar-rows').style.width = Math.min(totalRows / 5, 100) + '%'; 
 
       const estKB = totalRows * 2;
       const estMB = (estKB / 1024).toFixed(2);
       document.getElementById('limit-storage').textContent = estKB < 1024 ? estKB + ' KB' : estMB + ' MB';
       const storePct = Math.min((estKB / 1024) / 500 * 100, 100);
       document.getElementById('bar-storage').style.width = storePct.toFixed(1) + '%';
-      document.getElementById('limit-storage-status').textContent =
-        storePct < 50 ? 'Holati: yaxshi ✅' : storePct < 80 ? 'Holati: ehtiyot ⚠️' : 'Holati: to\'lib bormoqda ❗';
 
       const imgCount = products.reduce((s, p) => {
         return s + [p.image_url, p.image_url_2, p.image_url_3].filter(Boolean).length;
       }, 0);
       document.getElementById('limit-images').textContent = imgCount + ' ta';
-      const imgPct = Math.min(imgCount / 500 * 100, 100);
+      const imgPct = Math.min(imgCount / 200 * 100, 100); 
       document.getElementById('bar-images').style.width = imgPct.toFixed(1) + '%';
 
       const estBW = ((imgCount * 0.3 * 5) / 1024).toFixed(2);
       document.getElementById('limit-bw').textContent = estBW + ' GB';
       const bwPct = Math.min((estBW / 20) * 100, 100);
       document.getElementById('bar-bw').style.width = bwPct.toFixed(1) + '%';
-      // === END LIMIT DASHBOARD ===
-
-      // === ANALYTICS ===
-      await loadAnalytics();
-      // === END ANALYTICS ===
 
       renderAdminCats(); renderAdminProds(); renderCats(); renderProducts();
+
+      // Statistikani (7 kun) grafik orqali yuklash
+      try {
+        const startDate = new Date(Date.now() - 7 * 24 * 60 * 60 * 1000).toISOString();
+        const { data: viewsData } = await getWriteClient().from('page_views').select('view_date').gte('created_at', startDate);
+        const counts = {};
+        for(let i = 6; i >= 0; i--) {
+            const d = new Date(Date.now() - i * 86400000).toISOString().split('T')[0];
+            counts[d] = 0;
+        }
+        if(viewsData) {
+            viewsData.forEach(v => {
+                if(counts[v.view_date] !== undefined) counts[v.view_date]++;
+            });
+        }
+        const maxViews = Math.max(...Object.values(counts), 1);
+        document.getElementById('views-chart').innerHTML = Object.keys(counts).map(date => {
+            const h = (counts[date] / maxViews) * 100;
+            const shortDate = date.split('-').slice(1).join('.'); 
+            return `
+            <div style="flex:1; display:flex; flex-direction:column; align-items:center; gap:4px;">
+              <div style="font-size:11px; font-weight:800; color:var(--blue)">${counts[date]}</div>
+              <div style="width:100%; background:var(--bg); border-radius:6px; height:80px; position:relative; overflow:hidden;">
+                <div style="position:absolute; bottom:0; left:0; width:100%; height:${h}%; background:linear-gradient(0deg, #0D6B50, #1FAD80); border-radius:6px; transition: height 0.5s;"></div>
+              </div>
+              <div style="font-size:10px; color:var(--sub); font-weight:700">${shortDate}</div>
+            </div>`;
+        }).join('');
+      } catch (e) {
+        document.getElementById('views-chart').innerHTML = `<div style="font-size:12px; color:var(--sub)">Statistika jadvali qo'shilmagan. SQL kodni yozing.</div>`;
+      }
     }
 
     function switchTab(tab) {
@@ -2211,7 +2187,6 @@
     </div>`).join('');
     }
 
-    // Admin mahsulot qidiruvi
     function filterAdminProds() {
       const q = (document.getElementById('admin-prod-search')?.value || '').toLowerCase().trim();
       renderAdminProds(q);
@@ -2376,7 +2351,7 @@
       document.getElementById('confirm-sub').textContent =
         type === 'cat'
           ? 'Bu kategoriya o\'chiriladi.'
-          : 'Mahsulot va uning rasmi Supabase + ImageKit dan butunlay o\'chiriladi ✅';
+          : 'Mahsulot va uning rasmi butunlay o\'chiriladi ✅';
       document.getElementById('confirm-overlay').classList.add('open');
       document.getElementById('confirm-ok-btn').onclick = doDelete;
     }
@@ -2387,7 +2362,6 @@
       const { type, id } = pendingDelete;
 
       if (type === 'prod') {
-        // ImageKit dan rasmni ham o'chirish
         const prod = products.find(p => p.id === id);
         const fileIds = [prod?.imagekit_file_id, prod?.imagekit_file_id_2, prod?.imagekit_file_id_3].filter(Boolean);
         for (const fid of fileIds) await deleteFromImageKit(fid);
@@ -2406,68 +2380,18 @@
       setTimeout(() => t.classList.remove('show'), 2800);
     }
 
-    // ===== ANALYTICS =====
-    async function loadAnalytics() {
-      try {
-        const now = new Date();
-        const todayStart = new Date(now.getFullYear(), now.getMonth(), now.getDate()).toISOString();
-        const weekStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 6).toISOString();
-
-        const [todayRes, weekRes] = await Promise.all([
-          sb.from('page_views').select('id', { count: 'exact', head: true }).gte('created_at', todayStart),
-          sb.from('page_views').select('id', { count: 'exact', head: true }).gte('created_at', weekStart)
-        ]);
-        document.getElementById('an-today').textContent = todayRes.count ?? '—';
-        document.getElementById('an-week').textContent = weekRes.count ?? '—';
-
-        // 7 kunlik grafik
-        const days = [];
-        for (let i = 6; i >= 0; i--) {
-          const d = new Date(now.getFullYear(), now.getMonth(), now.getDate() - i);
-          days.push(d);
-        }
-        const counts = await Promise.all(days.map(async d => {
-          const from = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
-          const to = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).toISOString();
-          const r = await sb.from('page_views').select('id', { count: 'exact', head: true })
-            .gte('created_at', from).lt('created_at', to);
-          return r.count || 0;
-        }));
-
-        const maxCount = Math.max(...counts, 1);
-        const weekDays = ['Ya', 'Du', 'Se', 'Ch', 'Pa', 'Sh', 'Ya'];
-        const chart = document.getElementById('an-chart');
-        const labels = document.getElementById('an-labels');
-
-        chart.innerHTML = counts.map((c, i) => {
-          const pct = Math.max((c / maxCount) * 100, 4);
-          const isToday = i === 6;
-          return `<div style="flex:1;display:flex;flex-direction:column;align-items:center;gap:2px">
-            <div style="font-size:9px;font-weight:700;color:var(--sub)">${c || ''}</div>
-            <div style="width:100%;border-radius:6px 6px 0 0;background:${isToday ? 'linear-gradient(180deg,#0D6B50,#1FAD80)' : 'var(--border)'};height:${pct}%;min-height:4px"></div>
-          </div>`;
-        }).join('');
-
-        labels.innerHTML = days.map((d, i) => {
-          const isToday = i === 6;
-          return `<div style="flex:1;text-align:center;font-size:9px;font-weight:${isToday ? '800' : '600'};color:${isToday ? 'var(--blue)' : 'var(--sub)'}">${weekDays[d.getDay()]}</div>`;
-        }).join('');
-
-      } catch (e) {
-        // page_views jadvali yo'q bo'lsa xatolik ko'rsatmaydi
-        document.getElementById('an-today').textContent = '—';
-        document.getElementById('an-week').textContent = '—';
-        document.getElementById('an-chart').innerHTML = '<div style="font-size:12px;color:var(--sub);padding:20px">Statistika hali yoqilmagan</div>';
-      }
-    }
-
-    // ===== INIT =====
+    // ===== INIT & TRACKING =====
     (async () => {
+      // Statistika uchun tashrifni hisobga olish
+      if (!sessionStorage.getItem('techshop_visited')) {
+        sessionStorage.setItem('techshop_visited', '1');
+        const today = new Date().toISOString().split('T')[0];
+        sb.from('page_views').insert({ view_date: today }).then(() => {});
+      }
+
       await loadTelegramUsername();
       await loadAll(); renderCats(); renderProducts();
-      // Tashrif yozuvi (xatolik bo'lsa jim o'tadi)
-      sb.from('page_views').insert({}).then(() => { }).catch(() => { });
-      await tryAutoLogin(); // Sahifa yangilansa admin sessiyasini tiklash
+      await tryAutoLogin(); 
     })();
   </script>
 </body>
