@@ -2414,8 +2414,8 @@
         const weekStart = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 6).toISOString();
 
         const [todayRes, weekRes] = await Promise.all([
-          sb.from('page_views').select('id', { count: 'exact', head: true }).gte('viewed_at', todayStart),
-          sb.from('page_views').select('id', { count: 'exact', head: true }).gte('viewed_at', weekStart)
+          sb.from('page_views').select('id', { count: 'exact', head: true }).gte('created_at', todayStart),
+          sb.from('page_views').select('id', { count: 'exact', head: true }).gte('created_at', weekStart)
         ]);
         document.getElementById('an-today').textContent = todayRes.count ?? '—';
         document.getElementById('an-week').textContent = weekRes.count ?? '—';
@@ -2430,7 +2430,7 @@
           const from = new Date(d.getFullYear(), d.getMonth(), d.getDate()).toISOString();
           const to = new Date(d.getFullYear(), d.getMonth(), d.getDate() + 1).toISOString();
           const r = await sb.from('page_views').select('id', { count: 'exact', head: true })
-            .gte('viewed_at', from).lt('viewed_at', to);
+            .gte('created_at', from).lt('created_at', to);
           return r.count || 0;
         }));
 
@@ -2466,7 +2466,7 @@
       await loadTelegramUsername();
       await loadAll(); renderCats(); renderProducts();
       // Tashrif yozuvi (xatolik bo'lsa jim o'tadi)
-      sb.from('page_views').insert({ page: 'store' }).then(() => { }).catch(() => { });
+      sb.from('page_views').insert({}).then(() => { }).catch(() => { });
       await tryAutoLogin(); // Sahifa yangilansa admin sessiyasini tiklash
     })();
   </script>
